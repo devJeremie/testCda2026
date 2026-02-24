@@ -4,7 +4,16 @@
 
 {% block body %}
 
-<div class="">
-    <h1>Bienvenue</h1>
+<div class="user-section ms-auto">
+    {% if app.user %}
+        <span class="me-3">👋 Bonjour {{ app.user.username }} !</span>
+        <span>{{ app.user.email }}</span>
+        <a href="{{ path('app_logout') }}" class="btn btn-outline-danger btn-sm">
+            <i class="fas fa-sign-out-alt"></i> Déconnexion
+        </a>
+    {% else %}
+        <a href="{{ path('app_login') }}" class="btn btn-outline-primary btn-sm">Connexion</a>
+    {% endif %}
 </div>
+
 {% endblock %}
